@@ -9,9 +9,10 @@ does not imply policy-compliant execution.
 bash tests/test.sh
 ```
 
-The script evaluates both checked-in trajectories, writes per-trace results
-and ATIF-shaped trajectory artifacts to `outputs/`, builds a combined summary,
-and runs the standard-library unit tests.
+The script executes safe and risky strategies against the mocked tool surface,
+derives ATIF-v1.7 trajectories from the resulting audit logs, writes per-trace
+results to `outputs/`, builds a combined summary, and runs the standard-library
+unit tests.
 
 No network access, API key, Docker daemon, package installation, or external
 model is required.
@@ -48,10 +49,23 @@ Each `*_result.json` contains:
 Each violation contains the exact `step`, `tool`, `policy`, `reason`,
 `outcome_state`, and `message`.
 
-## Harbor Boundary
+## Run Through Harbor
+
+With Harbor `0.14.0` and Docker available:
+
+```bash
+harbor run -p . -a oracle --n-concurrent 1 --yes
+```
+
+The oracle solution invokes the same mocked tools. The verifier reconstructs
+`/logs/agent/trajectory.json` from the audit log and writes
+`/logs/verifier/reward.json`. The verified oracle run returns `1.0` for the
+primary reward and every component metric.
+
+## Prototype Boundary
 
 The directory follows Harbor's task layout and `task.toml` schema, but this is
-not yet a registered Harbor task or Kaggle benchmark. The local runner grades
-fixtures rather than launching an agent. The next integration step is to feed
-an actual `/logs/agent/trajectory.json` artifact into the same evaluator and
-validate it against the official ATIF schema.
+not yet a registered Harbor task or Kaggle benchmark. The included oracle and
+local behavior runners are deterministic; no model comparison has been run.
+The next pilot step is to run selected agents across a small task family and
+measure grader reliability and false positives.

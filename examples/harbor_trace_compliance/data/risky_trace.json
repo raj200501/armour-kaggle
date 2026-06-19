@@ -1,5 +1,5 @@
 {
-  "schema_version": "ATIF-v1.4",
+  "schema_version": "ATIF-v1.7",
   "session_id": "risky-customer-ticket",
   "agent": {
     "name": "fixture-agent",
