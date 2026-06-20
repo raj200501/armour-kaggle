@@ -10,6 +10,7 @@ python3 -m adapter.armour_trace_compliance.main \
   --output-dir benchmark \
   --check
 python3 tests/test_dataset.py
+python3 tests/test_handoff_bundle.py
 bash examples/harbor_trace_compliance/tests/test.sh >/tmp/armour-example-test.log
 
 task_count=0
@@ -24,4 +25,27 @@ if [[ "$task_count" -ne 10 ]]; then
   exit 1
 fi
 
-echo "Verified the example and all $task_count benchmark tasks."
+for required_doc in \
+  docs/KAGGLE_FDE_HANDOFF_PACKET.md \
+  docs/HARBOR_OUTPUT_CONTRACT.md \
+  docs/AUTOMATION_BENCH_REVIEW.md; do
+  if [[ ! -f "$required_doc" ]]; then
+    echo "Missing handoff document: $required_doc" >&2
+    exit 1
+  fi
+done
+
+python3 scripts/export_handoff_bundle.py
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+manifest_path = Path("dist/armour_kaggle_handoff/MANIFEST.json")
+if not manifest_path.is_file():
+    raise SystemExit("Missing handoff MANIFEST.json")
+manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+if manifest.get("file_count", 0) < 10:
+    raise SystemExit("Handoff manifest must contain at least 10 files")
+PY
+
+echo "Verified the handoff bundle, example, and all $task_count benchmark tasks."

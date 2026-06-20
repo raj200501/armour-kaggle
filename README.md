@@ -111,6 +111,19 @@ The generated tasks are intentionally checked in. A reviewer can inspect and
 run any task directly, while the adapter prevents generated copies from
 drifting away from the source catalog.
 
+## Kaggle/FDE Handoff
+
+This repository is prepared for Kaggle/FDE review, not already accepted or
+hosted by Kaggle. The review package includes:
+
+- [FDE handoff packet](docs/KAGGLE_FDE_HANDOFF_PACKET.md)
+- [Harbor output contract](docs/HARBOR_OUTPUT_CONTRACT.md)
+- [AutomationBench review](docs/AUTOMATION_BENCH_REVIEW.md)
+- deterministic bundle exporter: `python3 scripts/export_handoff_bundle.py`
+
+The exporter writes a focused, hash-manifested review bundle to
+`dist/armour_kaggle_handoff/` without modifying the benchmark source.
+
 ## Kaggle Boundary
 
 This repository is a technically executable pilot prepared for Kaggle review.

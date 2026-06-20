@@ -9,6 +9,12 @@ This repository supplies the public technical pilot. Kaggle supplies the
 hosted evaluation surface, managed model execution, private test material,
 leaderboard, and launch process.
 
+The proposed author-side domain expert and maintainer is Raj Kashikar. The
+proposed target is a public-launch decision four to six weeks after FDE kickoff,
+not a fixed launch commitment. See the
+[FDE handoff packet](KAGGLE_FDE_HANDOFF_PACKET.md) for the working schedule and
+open decisions.
+
 ## Pilot Package
 
 - Ten self-contained Harbor `1.3` tasks.
