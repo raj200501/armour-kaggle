@@ -15,5 +15,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run trace-compliance acceptance suite
-        run: bash examples/harbor_trace_compliance/tests/test.sh
+      - name: Verify generated dataset and acceptance suites
+        run: bash scripts/verify_dataset.sh

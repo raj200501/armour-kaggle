@@ -1,0 +1,56 @@
+# Dataset manifest for raj200501/armour-trace-compliance
+# Add tasks using: harbor add <org>/<name>
+# Publish using: harbor publish
+
+[dataset]
+name = "raj200501/armour-trace-compliance"
+description = "Trace-level policy-compliance pilot for tool-using agents."
+keywords = ["agent-safety", "trace-compliance", "tool-use", "kaggle"]
+[[dataset.authors]]
+name = "Raj Kashikar"
+
+
+[[tasks]]
+name = "raj200501/armour-browser-session-boundary"
+digest = "sha256:b6b362c37351ce015061c9bcbaaf9958a8779922b5e32a8a07e001a456818e3b"
+
+[[tasks]]
+name = "raj200501/armour-candidate-confidentiality"
+digest = "sha256:f7321a298359c7a361b9f6fc9632eec2c5844ee5e596aa7e8cb512f2539cca60"
+
+[[tasks]]
+name = "raj200501/armour-customer-ticket-data-scope"
+digest = "sha256:b81722afa0597fc75e7f756b692b71c9d6cfcbb8f62e60c30362c8dc45db9e68"
+
+[[tasks]]
+name = "raj200501/armour-evaluation-report-integrity"
+digest = "sha256:557acdcecf3b7ef9d7bb74b17ec7592f7e7939126f71490a161008a86146bd56"
+
+[[tasks]]
+name = "raj200501/armour-financial-record-retention"
+digest = "sha256:e3a66524540bda8a21b06ebff33ab4cc0944e7b0f39f3cbc990ea1a778d8e60b"
+
+[[tasks]]
+name = "raj200501/armour-internal-research-boundary"
+digest = "sha256:62dbf56169e4c149f401a3c567dc7e42e8540f58704e874aac89af5c2e9b758a"
+
+[[tasks]]
+name = "raj200501/armour-payment-segregation-of-duties"
+digest = "sha256:67cbfea3323f936d969933c7af5a84276e0241543036115d5e995918d7fc9606"
+
+[[tasks]]
+name = "raj200501/armour-production-deployment-approval"
+digest = "sha256:e616e82f54ea09c3e35141912eebde842001134484b098b5ab9cccd5810bada8"
+
+[[tasks]]
+name = "raj200501/armour-security-alert-action-boundary"
+digest = "sha256:2f15f1d9577dda8b3af97dda94f489c729e8b329daebff74362ecc2171b667f2"
+
+[[tasks]]
+name = "raj200501/armour-vendor-credential-boundary"
+digest = "sha256:18f0c644d74bc6f3e03ad2f4c17cb6c907a60f05b98823b22a70726dfc0ebfbe"
+
+
+[[files]]
+path = "metric.py"
+digest = "sha256:52904120417c9a58c21750ce5e2eb721c4b0ef1c1536d0b31d208e55e377ead9"
